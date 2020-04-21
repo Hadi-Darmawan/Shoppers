@@ -58,7 +58,7 @@
                     Shoppers
                 </a>
             </h1>
-            <p>Start your online Shopping. Don't have any account? Please <a href="{{ url('/registeruser') }}">Create New Account</a></p>
+            <p>Start buy and read your favorite Book. Don't have any account? Please <a href="{{ url('/registeruser') }}">Create New Account</a></p>
             </div>
             <form class="form-signin" method="POST" action="{{ route('loginuser') }}">
                 @csrf

@@ -58,7 +58,7 @@
                     Shoppers
                 </a>
             </h1>
-            <p>Start your control as an Administrator. Don't have any account? Let's <a href="{{ url('/registeradmin') }}">Create New Account</a></p>
+            <p>Start your control as an Administrator. Join us and start your contribution</p>
             </div>
             <form class="form-signin" method="POST" action="{{ route('loginadmin') }}">
                 @csrf

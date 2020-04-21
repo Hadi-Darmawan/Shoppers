@@ -77,9 +77,8 @@
                 <label for="inputPhone">Phone Number</label>
             </div>
 
-            <div class="custom-file mt-2">
+            <div class="custom-file mt-2 mb-4">
                 <input type="file" accept="image/*" name="profile_image" id="inputProfileImage" class="custom-file-input" required autofocus >
-                <!-- <input type="file" class="custom-file-input" id="customFile"> -->
                 <label class="custom-file-label" for="inputProfileImage">Profile Image</label>
                 <script>
                     $(".custom-file-input").on("change", function() {
@@ -88,7 +87,6 @@
                     });
                 </script>
             </div>
-
 
             <div class="form-label-group">
                 <input type="password" name="password" id="inputPassword" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="Password" required>

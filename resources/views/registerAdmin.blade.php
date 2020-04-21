@@ -44,8 +44,8 @@
         <div class="text-center mb-4 m-auto">
             <h1 class="h3 mb-3 font-weight-normal">
                 Register |
-                <a class="text-decoration-none" href="{{ url('/') }}">
-                    Shoppers
+                <a class="text-decoration-none" href="{{ route('welcome') }}">
+                    Home
                 </a>
             </h1>
             <p>Start your online Shopping. You have any account? Please <a href="{{ route('loginadmin') }}">Login Here</a></p>

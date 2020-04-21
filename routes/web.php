@@ -25,7 +25,7 @@ Route::get('/', function () {
 
 
 //User Route
-Route::get('/userhome', function () {
+Route::get('/user/home', function () {
     return view('userHome');
 })->middleware('auth:user')->name('userhome');
 
@@ -48,8 +48,8 @@ Route::get('/admin/home', function () {
 
 Route::get('/profileadmin', 'AdminController@getEditProfileAdmin')->name('profileadmin')->middleware('auth:admin');
 
-Route::get('/registeradmin', 'AuthAdminController@getRegisterAdmin')->middleware('guest');
-Route::post('/registeradmin', 'AuthAdminController@postRegisterAdmin')->name('registeradmin')->middleware('guest');
+Route::get('/registeradmin', 'AuthAdminController@getRegisterAdmin')->middleware('auth:admin');
+Route::post('/registeradmin', 'AuthAdminController@postRegisterAdmin')->name('registeradmin')->middleware('auth:admin');
 
 Route::get('/loginadmin', 'AuthAdminController@getLoginAdmin')->middleware('guest');
 Route::post('/loginadmin', 'AuthAdminController@postLoginAdmin')->name('loginadmin')->middleware('guest');

@@ -105,14 +105,14 @@
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">Aministrator Web Page</h4>
-                        <p class="text-muted">This website give you full control for your online shop. See some information about the shop that you have in Shoppers and trust us for the networking shopping sites</p>
+                        <p class="text-muted">Welcome to administrator web pages. This website give you full control for your Shoppers account's. See full information and give us your contribution. Shoppers reading everywhere and everytime</p>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">My Admin Dashboard</h4>
                         <ul class="nav flex-column justify-content-end">
                             <li><a class="text-decoration-none" href="{{ route('profileadmin') }}" class="text-white">My Profile</a></li>
                             <li><a class="text-decoration-none" href="{{ route('logoutadmin') }}" class="text-white">Logout</a></li>
-                            <li><a class="text-decoration-none" href="#" class="text-white">Help</a></li>
+                            <li><a class="text-decoration-none" href="{{ url('/registeradmin') }}" class="text-white">New Account</a></li>
                         </ul>
                     </div>
                 </div>

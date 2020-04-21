@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Auth;
 class AuthAdminController extends Controller
 {
     //Funsi Auth untuk Admin
-
     public function getLoginAdmin(){
         return view('loginAdmin');
     }
 
     public function postLoginAdmin(Request $request){
         if(Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])){
-            return (redirect()->route('adminhome'));
+            return redirect()->route('adminhome');
         };
 
         return redirect()->back();

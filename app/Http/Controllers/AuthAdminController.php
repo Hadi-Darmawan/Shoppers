@@ -42,9 +42,9 @@ class AuthAdminController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        Auth::guard('admin')->loginUsingId($admin->id);
+        // Auth::guard('admin')->loginUsingId($admin->id);
 
-        return (redirect()->route('adminhome'));
+        return redirect()->route('adminhome')->with('status', 'New account has been created');
     }
 
     public function logout(){

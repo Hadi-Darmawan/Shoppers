@@ -129,6 +129,11 @@
                 </button>
             </div>
         </div>
+        @if (session('status'))
+            <div class="alert alert-success text-center">
+                {{ session('status') }}
+            </div>
+        @endif
     </header>
     <div class="container-fluid">
         <div class="row">

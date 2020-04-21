@@ -6,18 +6,18 @@
 
 @section('content')
 <div class="card">
-  <div class="card-body text-center">
-    See all product that had posted
-    <a href="#" class="btn btn-outline-secondary btn-lg btn-block">All Product</a>
-  </div>
+    <div class="card-body text-center">
+        See all product that had posted
+        <a href="" class="btn btn-outline-secondary btn-lg btn-block">All Product</a>
+    </div>
 </div>
 <div class="card p-3 mb-5 pb-3 mt-4">
-  <div class="card-body text-center">
+    <div class="card-body text-center">
       <h4 class="card-title">Add the new product</h4>
   </div>
-  <form class="mt-2">
+  <form class="mt-2" method="" action="">
     <div class="form-group">
-      <label for="product_name">Product Name</label>
+        <label for="product_name">Product Name</label>
       <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter the product name">
     </div>
     <div class="form-group">
@@ -42,7 +42,7 @@
     <div class="form-group">
       <label for="product_image">Product Image</label>
       <div class="custom-file">
-          <input type="file" accept="image/*" name="product_image" id="product_image" class="custom-file-input" required autofocus >
+          <input type="file" accept="image/*" name="product_image" id="product_image" class="custom-file-input">
           <label class="custom-file-label" for="product_image">Select the product image</label>
           <script>
             $(".custom-file-input").on("change", function() {

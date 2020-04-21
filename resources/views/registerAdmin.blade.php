@@ -93,7 +93,7 @@
                 <label for="inputPassword">Password</label>
                 @if($errors->has('password'))
                     <div class="invalid-feedback">
-                        Konfirmasi Password tidak sesuai dengan menimal 6 karakter
+                        Konfirmasi Password tidak sesuai dengan minimal 6 karakter
                     </div>
                 @endif
             </div>

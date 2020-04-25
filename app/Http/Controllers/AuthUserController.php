@@ -17,7 +17,7 @@ class AuthUserController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             return redirect()->route('userhome');
         }
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Your password or username is incorrect');
     }
 
     public function getRegisterUser(){

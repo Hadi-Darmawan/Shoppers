@@ -18,7 +18,7 @@ class AuthAdminController extends Controller
             return redirect()->route('adminhome');
         };
 
-        return redirect()->back();
+        return redirect()->back()->with('status', 'Your password or username is incorrect');
     }
     
     public function getRegisterAdmin(){

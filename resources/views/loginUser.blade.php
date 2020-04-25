@@ -9,6 +9,9 @@
         <title>Shoopers - User Login Page</title>
 
         <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <!-- Bootstrap core CSS -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -61,9 +64,22 @@
             <p>Start buy and read your favorite Book. Don't have any account? Please <a href="{{ url('/registeruser') }}">Create New Account</a></p>
             </div>
             <form class="form-signin" method="POST" action="{{ route('loginuser') }}">
+            @if (session('status'))
+                <div class="alert alert-danger alert-dismissible text-center" id="myAlert">
+                    <button type="button" class="close">&times;</button>
+                    {{ session('status') }}
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $(".close").click(function(){
+                            $("#myAlert").alert("close");
+                        });
+                    });
+                </script>
+            @endif
                 @csrf
                 <div class="form-label-group">
-                    <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus autocomplete="off">
+                    <input type="text" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus autocomplete="off">
                     <label for="inputEmail">Email address</label>
                 </div>
 

@@ -11,8 +11,10 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/floating-labels/">
 
         <!-- Bootstrap core CSS -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="https://getbootstrap.com/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
         <!-- Favicons -->
         <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
@@ -59,8 +61,22 @@
                 </a>
             </h1>
             <p>Start your control as an Administrator. Join us and start your contribution</p>
-            </div>
-            <form class="form-signin" method="POST" action="{{ route('loginadmin') }}">
+        </div>
+        
+        <form class="form-signin" method="POST" action="{{ route('loginadmin') }}">
+            @if (session('status'))
+                <div class="alert alert-danger alert-dismissible text-center" id="myAlert">
+                    <button type="button" class="close">&times;</button>
+                    {{ session('status') }}
+                </div>
+                <script>
+                    $(document).ready(function(){
+                        $(".close").click(function(){
+                            $("#myAlert").alert("close");
+                        });
+                    });
+                </script>
+            @endif
                 @csrf
                 <div class="form-label-group">
                     <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus autocomplete="off">
@@ -80,9 +96,9 @@
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                 <p class="mt-2">Forgot your password? Please <a href="{{ url('/registeruser') }}">Reset password</a></p>
-                </div>
+                </div> -->
                 <p class="mt-5 mb-3 text-muted text-center">&copy; 2020 Kelompok 7 Praktikum Prognet</p>
             </form>
         </div>

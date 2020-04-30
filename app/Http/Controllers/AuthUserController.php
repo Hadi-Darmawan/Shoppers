@@ -48,6 +48,6 @@ class AuthUserController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('loginuser');
+        return redirect()->route('userhome');
     }
 }

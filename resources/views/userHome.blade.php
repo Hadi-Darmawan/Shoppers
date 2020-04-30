@@ -70,15 +70,15 @@
             </div>
             <div class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container d-flex justify-content-between">
-                    <a href="{{ route('welcome') }}" class="navbar-brand d-flex align-items-center">
+                    <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
                         <strong>Shoppers</strong>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                         @auth
-                            <a class="text-decoration-none mr-5 text-light" href="">{{Auth::User()->name}}</a>
+                            <a class="text-decoration-none mr-5 text-light" href="#">{{Auth::User()->name}}</a>
                         @endauth
                         @guest
-                            <a class="text-decoration-none mr-5 text-light" href="">Welcome</a>
+                            <a class="text-decoration-none mr-5 text-light" href="#">Welcome</a>
                         @endguest
                         <span class="navbar-toggler-icon"></span>
                     </button>

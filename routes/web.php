@@ -18,18 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 
 //Default Default
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+
+
+
+// Home Route Aplikasi
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
-
-
-//User Route
-Route::get('/user/home', function () {
-    return view('userHome');
+    return view('userhome');
 })->name('userhome');
 
-Route::get('/profileuser', 'UserController@getEditProfileUser')->name('profileuser')->middleware('auth:user');
+Route::get('/profile/user', 'UserController@getEditProfileUser')->name('profileuser')->middleware('auth:user');
 
 Route::get('/registeruser', 'AuthUserController@getRegisterUser')->middleware('guest');
 Route::post('/registeruser', 'AuthUserController@postRegisterUser')->name('registeruser')->middleware('guest');
@@ -37,14 +37,14 @@ Route::post('/registeruser', 'AuthUserController@postRegisterUser')->name('regis
 Route::get('/loginuser', 'AuthUserController@getLoginUser')->middleware('guest');
 Route::post('/loginuser', 'AuthUserController@postLoginUser')->name('loginuser')->middleware('guest');
 
-Route::get('/logout/user', 'AuthUserController@logout')->name('logoutuser')->middleware('auth:user');
+Route::get('/logout/user', 'AuthUserController@logout')->name('logoutuser')->middleware('auth');
 
 
 
 //Admin Route
-Route::get('/admin/home', function () {
-    return view('adminHome');
-})->middleware('admin')->name('adminhome');
+    Route::get('/admin/home', function () {
+        return view('adminHome');
+    })->middleware('admin')->name('adminhome');
 
 Route::get('/profileadmin', 'AdminController@getEditProfileAdmin')->name('profileadmin')->middleware('auth:admin');
 

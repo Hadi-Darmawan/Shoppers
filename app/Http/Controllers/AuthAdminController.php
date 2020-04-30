@@ -42,6 +42,7 @@ class AuthAdminController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        // Baris kode ini diganti karena hanya super admin (Admin yg telah login) yang dapat membuat akun admin baru jadi credential untuk login berdasarkan admin yang telah berhasil di daftarkan tidak diperlukan
         // Auth::guard('admin')->loginUsingId($admin->id);
 
         return redirect()->route('adminhome')->with('status', 'New account has been created');

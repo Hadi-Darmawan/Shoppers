@@ -48,14 +48,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-md-7 py-4">
-                            <h4 class="text-white">Aministrator Web Page</h4>
+                            <h4 class="text-white">User Page</h4>
                             <p class="text-muted">This website give you full control for your online shop. See some information about the shop that you have in Shoppers and trust us for the networking shopping sites</p>
                         </div>
                         <div class="col-sm-4 offset-md-1 py-4">
                             <h4 class="text-white">My Admin Dashboard</h4>
                             <ul class="nav flex-column justify-content-end">
-                                <li><a class="text-decoration-none" href="{{ route('profileuser') }}" class="text-white">My Profile</a></li>
-                                <li><a class="text-decoration-none" href="{{ route('logoutuser') }}" class="text-white">Logout</a></li>
+                                @auth 
+                                    <li><a class="text-decoration-none" href="{{ route('profileuser') }}" class="text-white">My Profile</a></li>
+                                    <li><a class="text-decoration-none" href="{{ route('logoutuser') }}" class="text-white">Logout</a></li>
+                                @endauth
+                                @guest
+                                    <li><a class="text-decoration-none" href="{{ route('loginuser') }}" class="text-white">Login</a></li>
+                                    <li><a class="text-decoration-none" href="{{ route('registeruser') }}" class="text-white">Sign Up</a></li>
+                                @endguest
                                 <li><a class="text-decoration-none" href="#" class="text-white">Help</a></li>
                             </ul>
                         </div>
@@ -68,7 +74,12 @@
                         <strong>Shoppers</strong>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                        <a class="text-decoration-none mr-5 text-light" href="#">{{Auth::User()->name}}</a>
+                        @auth
+                            <a class="text-decoration-none mr-5 text-light" href="">{{Auth::User()->name}}</a>
+                        @endauth
+                        @guest
+                            <a class="text-decoration-none mr-5 text-light" href="">Welcome</a>
+                        @endguest
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>

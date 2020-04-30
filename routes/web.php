@@ -27,7 +27,7 @@ Route::get('/', function () {
 //User Route
 Route::get('/user/home', function () {
     return view('userHome');
-})->middleware('auth:user')->name('userhome');
+})->name('userhome');
 
 Route::get('/profileuser', 'UserController@getEditProfileUser')->name('profileuser')->middleware('auth:user');
 
@@ -44,7 +44,7 @@ Route::get('/logout/user', 'AuthUserController@logout')->name('logoutuser')->mid
 //Admin Route
 Route::get('/admin/home', function () {
     return view('adminHome');
-})->middleware('auth:admin')->name('adminhome');
+})->middleware('admin')->name('adminhome');
 
 Route::get('/profileadmin', 'AdminController@getEditProfileAdmin')->name('profileadmin')->middleware('auth:admin');
 

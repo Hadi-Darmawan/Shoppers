@@ -79,13 +79,23 @@
             @endif
                 @csrf
                 <div class="form-label-group">
-                    <input type="text" id="inputUsername" class="form-control" name="username" placeholder="Username" required autofocus autocomplete="off">
+                    <input type="text" id="inputUsername" class="form-control @error('Username') is-invalid @enderror" name="Username" value="{{ old('Username') }}" placeholder="Username" autofocus autocomplete="off">
                     <label for="inputUsername">Username</label>
+                    @error('Username')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control @error('Password') is-invalid @enderror" name="Password" placeholder="Password">
                     <label for="inputPassword">Password</label>
+                    @error('Password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="checkbox mb-3">

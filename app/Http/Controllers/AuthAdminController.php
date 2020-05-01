@@ -20,8 +20,13 @@ protected function guard(){
     }
 
     public function postLoginAdmin(Request $request){
-        if(Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])){
-            $admin = Admin::all();
+        $this->validate($request,[
+            'Username' => 'required|alpha_dash',
+            'Password' => 'required|alpha_dash'
+        ]);
+
+        if(Auth::guard('admin')->attempt(['username' => $request->Username, 'password' => $request->Password])){
+            // $admin = Admin::all();
             // dd($admin);
             return redirect()->route('adminhome');
         };
@@ -41,18 +46,20 @@ protected function guard(){
     
     public function postRegisterAdmin(Request $request){
         $this->validate($request, [
-            'name' => 'required|min:2|max:255',
-            'username' => 'required|min:6|max:18|unique:admins',
-            'password' => 'required|min:6|max:24|confirmed'
+            'Nama' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/',
+            'Username' => 'required|unique:admins|alpha_dash',
+            'Phone' => 'required|numeric|digits_between:12,13',
+            'Profile' => 'required|file|filled',
+            'password' => 'required|min:6|max:24|alpha_dash|confirmed'
         ]);
 
-        $profile = $request->file('profile_image')->store('profile_image');
+        $profile = $request->file('Profile')->store('profile_image');
 
-        $admin = Admin::create([
-            'name' => $request->name,
+        Admin::create([
+            'name' => $request->Nama,
             'username' => $request->username,
             'profile_image' => $profile,
-            'phone' => $request->phone,
+            'phone' => $request->Phone,
             'password' => bcrypt($request->password),
         ]);
 

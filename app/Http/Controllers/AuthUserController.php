@@ -14,7 +14,12 @@ class AuthUserController extends Controller
     }
 
     public function postLoginUser(Request $request){
-        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
+        $this->validate($request,[
+            'Email' => 'required|email',
+            'Password' => 'required|alpha_dash'
+        ]);
+
+        if(Auth::attempt(['email' => $request->Email, 'password' => $request->Password])){
             return redirect()->route('userhome');
         }
         return redirect()->back()->with('status', 'Your password or username is incorrect');
@@ -26,16 +31,17 @@ class AuthUserController extends Controller
 
     public function postRegisterUser(Request $request){
         $this->validate($request, [
-            'name' => 'required|min:2|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|max:24|confirmed'
+            'Nama' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/',
+            'Email' => 'required|unique:users',
+            'Profile' => 'required|file|filled',
+            'password' => 'required|min:6|max:24|alpha_dash|confirmed'
         ]);
 
-        $profile = $request->file('profile_image')->store('profile_image');
+        $profile = $request->file('Profile')->store('profile_image');
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name' => $request->Nama,
+            'email' => $request->Email,
             'profile_image' => $profile,
             'status' => $request->status,
             'password' => bcrypt($request->password)

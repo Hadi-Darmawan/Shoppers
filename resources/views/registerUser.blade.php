@@ -52,54 +52,67 @@
             </div>
         <form class="form-signin" method="POST" action="{{ route('registeruser') }}" enctype="multipart/form-data">
         @csrf
+
+        <input type="disable" name="status" id="inputStatus" class="form-control" placeholder="Status" value="Active" hidden readonly>
+
             <div class="form-label-group">
-                <input type="text" name="name" id="inputName" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Full name" value="{{ old('name') }}" required autofocus autocomplete="off">
+                <input type="text" name="Nama" id="inputName" class="form-control @error('Nama') is-invalid @enderror" placeholder="Full name" value="{{ old('Nama') }}" autofocus autocomplete="off">
                 <label for="inputName">Full name</label>
-                @if($errors->has('name'))
+                @error('Nama')
                     <div class="invalid-feedback">
-                        Nama tidak sesuai!
+                        {{ $message }}
                     </div>
-                @endif
+                @enderror
             </div>
 
             <div class="form-label-group">
-                <input type="email" name="email" id="inputEmail" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Email address" value="{{ old('email') }}" required autofocus autocomplete="off">
+                <input type="email" name="Email" id="inputEmail" class="form-control @error('Email') is-invalid @enderror" placeholder="Email address" value="{{ old('Email') }}" autofocus autocomplete="off">
                 <label for="inputEmail">Email address</label>
-                @if($errors->has('email'))
+                @error('Email')
                     <div class="invalid-feedback">
-                        Email tidak sesuai atau sudah digunakan
+                        {{ $message }}
                     </div>
-                @endif
+                @enderror
             </div>
 
-            <div class="custom-file mt-2">
-                <input type="file" name="profile_image" id="inputProfileImage" class="custom-file-input" required autofocus >
-                <input type="file" class="custom-file-input" id="customFile">
+            <div class="custom-file mt-2 mb-3">
+            <div class="form-label-group mt-1">
+                <input type="file" name="Profile" id="inputProfileImage" accept="image/*" class="custom-file-input @error('Profile') is-invalid @enderror" autofocus>
+                <!-- <input type="file" class="custom-file-input" id="customFile" > -->
                 <label class="custom-file-label" for="inputProfileImage">Profile Image</label>
+                @error('Profile')
+                    <div class="invalid-feedback mb-4">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <!-- JQuery Untuk Menampilkan Nama File Gambar yang di Upload -->
                 <script>
-                $(".custom-file-input").on("change", function() {
-                var fileName = $(this).val().split("\\").pop();
-                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-                });
+                    $(".custom-file-input").on("change", function() {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                    });
                 </script>
             </div>
-
-                <input type="disable" name="status" id="inputStatus" class="form-control" placeholder="Status" value="Active" hidden readonly>
-
-            <div class="form-label-group">
-                <input type="password" name="password" id="inputPassword" class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="Password" required>
-                <label for="inputPassword">Password</label>
-                @if($errors->has('password'))
-                    <div class="invalid-feedback">
-                        Password harus sesuai Confirmation Password serta menimal 6 karakter
-                    </div>
-                @endif
             </div>
-            
+
+            <div class="form-label-group mt-1">
+                <input type="password" name="password" id="inputPassword" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                <label for="inputPassword">Password</label>
+                @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+        
             <div class="form-label-group">
-                <input type="password" name="password_confirmation" id="inputPassword" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" placeholder="Password Confirmation" required>
+                <input type="password" name="password_confirmation" id="inputPassword" class="form-control @error('password_confirmation') is-invalid @enderror" placeholder="Password Confirmation">
                 <label for="inputPassword">Password Confirmation</label>
+                @error('password_confirmation')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="checkbox mb-3">

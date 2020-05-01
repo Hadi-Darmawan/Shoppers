@@ -79,15 +79,24 @@
             @endif
                 @csrf
                 <div class="form-label-group">
-                    <input type="text" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus autocomplete="off">
+                    <input type="text" id="inputEmail" class="form-control @error('Email') is-invalid @enderror" name="Email" placeholder="Email address" value="{{ old('Email') }}" autofocus autocomplete="off">
                     <label for="inputEmail">Email address</label>
+                    @error('Email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="form-label-group">
-                    <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+                    <input type="password" id="inputPassword" class="form-control @error('Password') is-invalid @enderror" name="Password" placeholder="Password">
                     <label for="inputPassword">Password</label>
+                    @error('Password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
-
                 <div class="checkbox mb-3">
                     <label>
                         <input type="checkbox" value="remember-me"> Remember me

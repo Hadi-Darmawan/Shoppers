@@ -8,10 +8,10 @@
 <body>
     
     Progres Modul 1
-        1. Membuat Validasi Input Registrasi Admin
-        2. Membuat Validasi Input Registrasi User
-        3. Membuat Validasi Input Login Admin
-        4. Membuat Validasi Input Login User
+        <!-- 1. Membuat Validasi Input Registrasi Admin -->
+        <!-- 2. Membuat Validasi Input Registrasi User -->
+        <!-- 3. Membuat Validasi Input Login Admin -->
+        <!-- 4. Membuat Validasi Input Login User -->
 
     Progres Modul 2
         1. Membuat CRUD Courier

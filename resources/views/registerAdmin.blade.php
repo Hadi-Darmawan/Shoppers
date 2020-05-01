@@ -44,7 +44,7 @@
         <div class="text-center mb-4 m-auto">
             <h1 class="h3 mb-3 font-weight-normal">
                 Register |
-                <a class="text-decoration-none" href="{{ route('welcome') }}">
+                <a class="text-decoration-none" href="{{ route('adminhome') }}">
                     Home
                 </a>
             </h1>

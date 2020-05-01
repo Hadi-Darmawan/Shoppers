@@ -4,22 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Admin;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 
 class AuthAdminController extends Controller
 {
     //Funsi Auth untuk Admin
+
+protected function guard(){
+    return Auth::guard('admin');
+}
+
     public function getLoginAdmin(){
         return view('loginAdmin');
     }
 
     public function postLoginAdmin(Request $request){
         if(Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password])){
+            $admin = Admin::all();
+            // dd($admin);
             return redirect()->route('adminhome');
         };
 
         return redirect()->back()->with('status', 'Your password or username is incorrect');
     }
+
+    // public function home(Request $request, $id){
+    //     $admin = $request->session()->get('admin', function(){
+    //         return view('layout.admin', compact('admin'));
+    //     });
+    // }
     
     public function getRegisterAdmin(){
         return view('registerAdmin');

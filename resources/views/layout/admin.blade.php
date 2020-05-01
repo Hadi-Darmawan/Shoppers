@@ -124,7 +124,7 @@
                     <strong>Shoppers</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- <a class="text-decoration-none mr-5 text-light" href="#">{{auth()->admin()->name}}</a> -->
+                    <a class="text-decoration-none mr-5 text-light" href="#">{{ Auth::User()->name }}</a>
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>

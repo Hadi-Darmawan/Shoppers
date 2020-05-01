@@ -17,9 +17,9 @@
             <!-- - User yang tidak login tidak dapat membeli barang dan ketika mengakses halaman ceklist barang maka akan dialihkan ke halaman login user -->
         2. Revisi Routing Admin
             <!-- - Halaman Login admin hanya dapat diakses melalui URL -->
-            - Admin yang tidak login tapi berusaha untuk mengakses halaman login akan dialihkan ke halaman login admin
-            - Admin yang tidak login tapi berusaha untuk mengakses halaman register akan dialikan ke halaman register admin
-            - Admin yang telah login atau belum tidak dapat mengakses halaman Spesifik User (Profile User, Keranjang User, dan Wishlist User)
+            <!-- - Admin yang tidak login tapi berusaha untuk mengakses halaman login akan dialihkan ke halaman login admin -->
+            <!-- - Admin yang tidak login tapi berusaha untuk mengakses halaman register akan dialikan ke halaman register admin -->
+            <!-- - Admin yang telah login atau belum tidak dapat mengakses halaman Spesifik User (Profile User, Keranjang User, dan Wishlist User) -->
 
     </p>
 </body>

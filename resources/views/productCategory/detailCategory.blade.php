@@ -15,21 +15,21 @@
                 @csrf
                 <button type="submit" class="btn btn-outline-danger mx-2">Delete</button>
             </form>
-            <a href="{{ route('addCategory')}}" class="btn btn-outline-secondary mx-1">Another link</a>
+            <a href="{{ route('addCategory')}}" class="btn btn-outline-secondary mx-1">All Product Category</a>
         </div>
         <div class="form-group mb-3">
             <form class="input-group mb-3" method="post" action="{{ route('updateCategory', $product_category->id)}}">
                 @method('patch')
                 @csrf
-                <input type="text" class="form-control mx-1" name="category_name" value="{{ $product_category->category_name }}" placeholder="Add New Product Category">
+                <input type="text" class="form-control mx-1" name="category_name" value="{{ $product_category->category_name }}" placeholder="Edit Product Category Name">
                 <button class="btn btn-outline-primary mx-1" type="submit">Save Change</button>
             </form>
         </div>
-        @if (session('status'))
-            <div class="alert alert-success text-center">
-                {{ session('status') }}
+        @error('category_name')
+            <div class="invalid-feedback">
+                {{ $message }}
             </div>
-        @endif
+        @enderror
     </div>
 </div>
 

@@ -14,9 +14,10 @@
         <!-- 4. Membuat Validasi Input Login User -->
 
     Progres Modul 2
-        1. Membuat CRUD Courier
+        <!-- 1. Membuat CRUD Courier -->
         2. Membuat CRUD Product
-        2. Membuat CRUD Detail_Kategori
+        <!-- 3. Membuat CRUD Categories -->
+        4. Membuat CRUD Detail_Kategori
 
 </body>
 </html>

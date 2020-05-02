@@ -15,7 +15,7 @@ class ProductCategoryController extends Controller
     public function index()
     {
         $product_categories = Product_Category::all()->sortBy('category_name');
-        return view('addCategory', compact('product_categories'));
+        return view('productCategory/addCategory', compact('product_categories'));
     }
 
     /**
@@ -38,7 +38,7 @@ class ProductCategoryController extends Controller
     {
 
         $this->validate($request, [
-            'category_name' => 'required|min:2|max:50'
+            'category_name' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/'
         ]);
 
         Product_Category::create($request->all());
@@ -53,7 +53,7 @@ class ProductCategoryController extends Controller
      */
     public function show(Product_Category $product_category)
     {
-        return view('detailCategory', compact('product_category'));
+        return view('productCategory/detailCategory', compact('product_category'));
     }
 
     /**
@@ -96,6 +96,6 @@ class ProductCategoryController extends Controller
     public function destroy(Product_Category $product_category)
     {
         Product_Category::destroy($product_category->id);
-        return redirect()->route('addCategory')->with('status', 'Category Has Been Deleted');
+        return redirect()->route('productCategory/addCategory')->with('status', 'Category Has Been Deleted');
     }
 }

@@ -11,9 +11,9 @@ class AuthAdminController extends Controller
 {
     //Funsi Auth untuk Admin
 
-protected function guard(){
-    return Auth::guard('admin');
-}
+    protected function guard(){
+        return Auth::guard('admin');
+    }
 
     public function getLoginAdmin(){
         return view('loginAdmin');
@@ -57,7 +57,7 @@ protected function guard(){
 
         Admin::create([
             'name' => $request->Nama,
-            'username' => $request->username,
+            'username' => $request->Username,
             'profile_image' => $profile,
             'phone' => $request->Phone,
             'password' => bcrypt($request->password),

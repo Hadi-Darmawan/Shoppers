@@ -68,10 +68,22 @@ Route::get('/admin/product/addnew', function () {
 //Product Category Route
 Route::get('admin/category', 'ProductCategoryController@index')->middleware('admin:admin')->name('addCategory');
 
-Route::get('admin/category/{product_category}', 'ProductCategoryController@show')->middleware('admin:admin')->name('detailCategory');
-
 Route::post('admin/category/addnew', 'ProductCategoryController@store')->middleware('admin:admin')->name('addNewCategory');
+
+Route::get('admin/category/{product_category}', 'ProductCategoryController@show')->middleware('admin:admin')->name('detailCategory');
 
 Route::delete('admin/category/{product_category}', 'ProductCategoryController@destroy')->middleware('admin:admin')->name('deleteCategory');
 
 Route::patch('admin/category/{product_category}', 'ProductCategoryController@update')->middleware('admin:admin')->name('updateCategory');
+
+
+//Courier Route
+Route::get('admin/courier', 'CourierController@index')->middleware('admin:admin')->name('addCourier');
+
+Route::post('admin/courier/addnew', 'CourierController@store')->middleware('admin:admin')->name('addNewCourier');
+
+Route::get('admin/courier/{courier}', 'CourierController@show')->middleware('admin:admin')->name('detailCourier');
+
+Route::delete('admin/courier/{courier}', 'CourierController@destroy')->middleware('admin:admin')->name('deleteCourier');
+
+Route::patch('admin/courier/{courier}', 'CourierController@update')->middleware('admin:admin')->name('updateCourier');

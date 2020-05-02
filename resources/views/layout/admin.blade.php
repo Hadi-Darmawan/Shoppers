@@ -130,9 +130,17 @@
             </div>
         </div>
         @if (session('status'))
-            <div class="alert alert-success text-center">
+            <div class="alert alert-success alert-dismissible text-center" id="myAlert">
+                <button type="button" class="close">&times;</button>
                 {{ session('status') }}
             </div>
+            <script>
+                $(document).ready(function(){
+                    $(".close").click(function(){
+                        $("#myAlert").alert("close");
+                    });
+                });
+            </script>
         @endif
     </header>
     <div class="container-fluid">
@@ -165,7 +173,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('addCourier') }}">
                             <span data-feather="truck"></span>
                             Couriers
                             </a>

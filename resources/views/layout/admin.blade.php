@@ -110,9 +110,9 @@
                 <div class="row">
                     <div class="col-sm-8 col-md-7 py-4">
                         <h4 class="text-white">Aministrator Web Page</h4>
-                        <p class="text-muted">Welcome to administrator web pages. This website give you full control for your Shoppers account's. See full information and give us your contribution. Shoppers reading everywhere and everytime</p>
+                        <p class="text-muted text-justify">Welcome to administrator web pages. This website give you full control for your Shoppers account's. See full information and give us your contribution. Shoppers reading everywhere and everytime</p>
                     </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
+                    <div class="col-sm-4 offset-md-1 py-4 text-right">
                         <h4 class="text-white">My Admin Dashboard</h4>
                         <ul class="nav flex-column justify-content-end">
                             <li><a class="text-decoration-none" href="{{ route('profileadmin') }}" class="text-white">My Profile</a></li>
@@ -125,7 +125,7 @@
         </div>
         <div class="navbar navbar-dark bg-dark shadow-sm">
             <div class="container d-flex justify-content-between">
-                <a href="" class="navbar-brand d-flex align-items-center">
+                <a href="{{ route('adminhome') }}" class="navbar-brand d-flex align-items-center">
                     <strong>Shoppers</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">

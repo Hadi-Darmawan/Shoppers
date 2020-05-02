@@ -16,6 +16,7 @@
                 <button type="submit" class="btn btn-outline-danger mx-2">Delete</button>
             </form>
             <a href="{{ route('addCategory')}}" class="btn btn-outline-secondary mx-1">All Product Category</a>
+            <a href="{{ route('addProduct')}}" class="btn btn-outline-primary mx-1">Add New Product</a>
         </div>
         <div class="form-group mb-3">
             <form class="input-group mb-3" method="post" action="{{ route('updateCategory', $product_category->id)}}">

@@ -14,7 +14,7 @@
 <div class="card p-3 mb-5 pb-3 mt-4">
     <div class="card-body text-center">
       <h4 class="card-title">Add the new product</h4>
-  </div>
+  	</div>
   <form class="mt-2" method="" action="">
     <div class="form-group">
         <label for="product_name">Product Name</label>
@@ -23,11 +23,11 @@
     <div class="form-group">
       <label for="product_kategory">Product Ketegory</label>
       <div class="input-group mb-1">
-        <select class="custom-select" id="product_kategory" name="kategory_product">
-          <option selected>Choose The Product Kategory</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <select class="custom-select" id="product_kategory" name="kategory_product" size="3">
+		  <option selected>Choose the product category</option>
+		  @foreach($product_category as $category)
+		  	<option value="{{ $category->id }}">{{ $category->category_name }}</option>
+		  @endforeach
         </select>
         <div class="input-group-append">
           <label class="input-group-text" for="product_kategory">Kategory</label>
@@ -58,7 +58,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text">Rp</span>
         </div>
-        <input type="text" id="product_price" class="form-control" name="price" placeholder="Enter the product price"">
+        <input type="text" id="product_price" class="form-control price" name="price" placeholder="Enter the product price"">
         <div class="input-group-append">
           <span class="input-group-text">,-</span>
         </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Add Product</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Add and Publish Product</button>
   </form>
 </div>
 @endsection

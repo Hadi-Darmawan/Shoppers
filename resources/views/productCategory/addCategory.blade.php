@@ -6,10 +6,17 @@
 
 @section('content')
 
+<div class="card">
+    <div class="card-body text-center">
+        <p class="card-title">Return to add new Product</p>
+        <a href="{{ route('addProduct') }}" class="btn btn-outline-secondary btn-lg btn-block">Add Product</a>
+    </div>
+</div>
+
 <div class="card p-3 mb-5 pb-3 mt-4">
     <div class="card-body text-center">
         <h4 class="card-title">Product Category</h4>
-    </div>
+  	</div>
     <ul class="list-group py-4 px-4">
         @foreach($product_categories as $product_category)
         <li class="list-group-item d-flex justify-content-between align-items-center">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Product_Category;
 use Illuminate\Http\Request;
 
 class ProductAdminController extends Controller
@@ -26,7 +27,8 @@ class ProductAdminController extends Controller
      */
     public function create()
     {
-        return view('product/addProduct');
+        $product_category = Product_Category::all()->sortBy('category_name');
+        return view('product/addProduct', compact('product_category'));
     }
 
     /**

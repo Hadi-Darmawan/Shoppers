@@ -60,7 +60,7 @@ Route::get('/logout/admin', 'AuthAdminController@logout')->name('logoutadmin')->
 
 //Product Route
 Route::get('/admin/product/addnew', function () {
-    return view('addProduct');
+    return view('product/addProduct');
 })->middleware('auth:admin')->name('addproduct');
 
 

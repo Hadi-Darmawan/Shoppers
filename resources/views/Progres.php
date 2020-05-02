@@ -18,6 +18,8 @@
         2. Membuat CRUD Product
         <!-- 3. Membuat CRUD Categories -->
         4. Membuat CRUD Detail_Kategori
+        5. Membuat CRUD Product_Images
+        6. Membuat CRUD Discount
 
 </body>
 </html>

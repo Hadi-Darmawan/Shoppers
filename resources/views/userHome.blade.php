@@ -16,6 +16,10 @@
         <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"><\/script>')</script>
         <script src="https://getbootstrap.com/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
         <!-- Favicons -->
         <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
         <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
@@ -37,6 +41,11 @@
             font-size: 3.5rem;
             }
         }
+
+        .carousel-inner img {
+      width: 100%;
+      height: 500;
+  }
         </style>
 
         <!-- Custom styles for this template -->
@@ -56,7 +65,7 @@
                                     <p class="text-muted">Welcome in Shoppers. This page will helps you to find your favorite books. Start exploring and get its all here in Shoppers.</p>
                                 @endguest
                         </div>
-                        <div class="col-sm-4 offset-md-1 py-4">
+                        <div class="col-sm-4 offset-md-1 py-4 text-right">
                             <h4 class="text-white">My Admin Dashboard</h4>
                             <ul class="nav flex-column justify-content-end">
                                 @auth 
@@ -102,30 +111,65 @@
             </div>
         </nav>
 
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-            <div class="col-md-5 p-lg-5 mx-auto my-5">
-                <h1 class="display-4 font-weight-normal">Punny headline</h1>
-                <p class="lead font-weight-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-                <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+        
+        <div id="demo" class="carousel slide pt-3" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://i.stack.imgur.com/hXVQV.jpg" alt="Los Angeles" width="1100" height="500">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://ourcodeworld.com/public-media/articles/articleocw-59cb7f7a3a081.png" alt="Chicago" width="1100" height="500">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.webdesignerdepot.com/cdn-origin/uploads/2018/02/06-web-routes-laravel-code-tutorial.jpg" alt="New York" width="1100" height="500">
+                </div>
             </div>
-            <div class="product-device shadow-sm d-none d-md-block"></div>
-            <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
         </div>
 
-        <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-            <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
-                <div class="my-3 py-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-5 text-left bg-light">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
                 </div>
-                <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-            </div>
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                    <h2 class="display-5">Another headline</h2>
-                    <p class="lead">And an even wittier subheading.</p>
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
                 </div>
-                <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
 

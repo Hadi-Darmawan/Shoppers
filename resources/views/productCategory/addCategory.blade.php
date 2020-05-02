@@ -21,7 +21,7 @@
     <div class="form-group mb-3 px-4">
         <form class="input-group mb-3" method="post" action="{{ route('addNewCategory') }}">
         @csrf
-        <input type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" placeholder="Add New Product Category" aria-label="Recipient's username" >
+        <input type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" placeholder="Add New Product Category" aria-label="Recipient's username" autocomplete="off">
             <button class="btn btn-outline-secondary" type="submit">Add Category</button>
             @error('category_name')
                 <div class="invalid-feedback">

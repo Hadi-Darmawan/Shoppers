@@ -59,9 +59,13 @@ Route::get('/logout/admin', 'AuthAdminController@logout')->name('logoutadmin')->
 
 
 //Product Route
-Route::get('/admin/product/addnew', function () {
-    return view('product/addProduct');
-})->middleware('auth:admin')->name('addproduct');
+Route::get('admin/product', 'ProductAdminController@index')->middleware('admin:admin')->name('allProduct');
+
+Route::get('admin/product/addnew', 'ProductAdminController@create')->middleware('admin:admin')->name('addProduct');
+
+// Route::get('/admin/product/addnew', function () {
+//     return view('product/addProduct');
+// })->middleware('auth:admin')->name('addProduct');
 
 
 

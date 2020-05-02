@@ -17,7 +17,12 @@
 
     <style>
         html, body {
+            background-color: #fff;
+            color: #636b6f;
             font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
         }
         strong{
             font-size: 27px;
@@ -161,7 +166,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('addproduct') }}">
+                            <a class="nav-link" href="{{ route('allProduct') }}">
                             <span data-feather="shopping-cart"></span>
                             Products
                             </a>

@@ -8,7 +8,7 @@
 <div class="card">
     <div class="card-body text-center">
         See all product that had posted
-        <a href="" class="btn btn-outline-secondary btn-lg btn-block">All Product</a>
+        <a href="{{ route('allProduct') }}" class="btn btn-outline-secondary btn-lg btn-block">All Product</a>
     </div>
 </div>
 <div class="card p-3 mb-5 pb-3 mt-4">

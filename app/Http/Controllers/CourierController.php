@@ -52,7 +52,7 @@ class CourierController extends Controller
      */
     public function show(Courier $courier)
     {
-        return view('courier/detailCourier', compact('courier'));
+        //
     }
 
     /**
@@ -63,7 +63,7 @@ class CourierController extends Controller
      */
     public function edit(Courier $courier)
     {
-        //
+        return view('courier/detailCourier', compact('courier'));
     }
 
     /**

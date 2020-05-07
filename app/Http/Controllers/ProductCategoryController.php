@@ -53,7 +53,7 @@ class ProductCategoryController extends Controller
      */
     public function show(Product_Category $product_category)
     {
-        return view('productCategory/detailCategory', compact('product_category'));
+        //
     }
 
     /**
@@ -62,9 +62,9 @@ class ProductCategoryController extends Controller
      * @param  \App\Product_Category  $product_Category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product_Category $product_Category)
+    public function edit(Product_Category $product_category)
     {
-        //
+        return view('productCategory/detailCategory', compact('product_category'));
     }
 
     /**
@@ -96,6 +96,6 @@ class ProductCategoryController extends Controller
     public function destroy(Product_Category $product_category)
     {
         Product_Category::destroy($product_category->id);
-        return redirect()->route('productCategory/addCategory')->with('status', 'Category Has Been Deleted');
+        return redirect()->route('addCategory')->with('status', 'Category Has Been Deleted');
     }
 }

@@ -13,23 +13,26 @@
 </div>
 <div class="card p-3 mb-5 pb-3 mt-4">
     <div class="card-body text-center">
-        <h4 class="card-title">Add the new product</h4>
+        <h4 class="card-title">Detail Product</h4>
     </div>
       
     <form class="mt-2" method="post" action="{{ route('newProduct') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="product_name">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter the product name">
+            <input type="text" class="form-control" id="product_name" name="product_name" value="{{$product->product_name}}">
         </div>
         <div class="form-group">
             <label for="product_kategory">Product Ketegory</label>
             <div class="input-group mb-1">
-                <select class="custom-select" id="product_kategory" name="category[]" multiple="">
-                    <option selected>Choose the product category</option>
-            @foreach($product_category as $category)
-                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-            @endforeach
+                <select class="custom-select" id="product_kategory" name="category" multiple="">
+                    <!-- @foreach($product->product_category as $category)
+                    <option selected>{{$category->category_name}}</option>
+                    @endforeach -->
+                @foreach($product_category as $categories)
+                    <option value="{{ $categories->id }}" @foreach($product->product_category as $category) @if($categories->id == $category->id)selected @endif @endforeach> {{ $categories->category_name }}
+                    </option>
+                @endforeach
                 </select>
                 <div class="input-group-append">
                     <label class="input-group-text" for="product_kategory">Kategory</label>
@@ -40,12 +43,12 @@
         </div>
         <div class="form-group">
             <label for="description">Product Description</label>
-            <textarea type="text" class="form-control" id="description" name="description" placeholder="Enter the product description" style="resize:none;height:120px;"></textarea>
+            <textarea class="form-control" id="description" name="description" placeholder="Enter the product description" style="resize:none;height:120px;"></textarea>
         </div>
         <div class="form-group">
             <label for="product_image">Product Image</label>
             <div class="custom-file">
-                <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input" multiple="true">
+                <input type="file" accept="image/*" name="image_name" id="product_image" class="custom-file-input">
                 <label class="custom-file-label" for="product_image">Select the product image</label>
                 <script>
                 $(".custom-file-input").on("change", function() {
@@ -54,19 +57,6 @@
                 });
                 </script>
             </div>
-            @if (session('images_status'))
-                <div class="alert alert-danger alert-dismissible text-center" id="myAlert">
-                    <button type="button" class="close">&times;</button>
-                    {{ session('images_status') }}
-                </div>
-                <script>
-                    $(document).ready(function(){
-                        $(".close").click(function(){
-                            $("#myAlert").alert("close");
-                        });
-                    });
-                </script>
-            @endif
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">

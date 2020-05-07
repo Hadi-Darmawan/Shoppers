@@ -63,7 +63,9 @@ Route::get('admin/product', 'ProductAdminController@index')->middleware('admin:a
 
 Route::get('admin/product/addnew', 'ProductAdminController@create')->middleware('admin:admin')->name('addProduct');
 
-Route::post('admin/product/newProduct', 'ProductAdminController@store')->middleware('admin:admin')->name('newProduct');
+Route::post('admin/product/new', 'ProductAdminController@store')->middleware('admin:admin')->name('newProduct');
+
+Route::get('admin/product/{product}', 'ProductAdminController@edit')->middleware('admin:admin')->name('detailProduct');
 
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');
@@ -76,7 +78,7 @@ Route::get('admin/category', 'ProductCategoryController@index')->middleware('adm
 
 Route::post('admin/category/addnew', 'ProductCategoryController@store')->middleware('admin:admin')->name('addNewCategory');
 
-Route::get('admin/category/{product_category}', 'ProductCategoryController@show')->middleware('admin:admin')->name('detailCategory');
+Route::get('admin/category/{product_category}', 'ProductCategoryController@edit')->middleware('admin:admin')->name('detailCategory');
 
 Route::delete('admin/category/{product_category}', 'ProductCategoryController@destroy')->middleware('admin:admin')->name('deleteCategory');
 
@@ -88,7 +90,7 @@ Route::get('admin/courier', 'CourierController@index')->middleware('admin:admin'
 
 Route::post('admin/courier/addnew', 'CourierController@store')->middleware('admin:admin')->name('addNewCourier');
 
-Route::get('admin/courier/{courier}', 'CourierController@show')->middleware('admin:admin')->name('detailCourier');
+Route::get('admin/courier/{courier}', 'CourierController@edit')->middleware('admin:admin')->name('detailCourier');
 
 Route::delete('admin/courier/{courier}', 'CourierController@destroy')->middleware('admin:admin')->name('deleteCourier');
 

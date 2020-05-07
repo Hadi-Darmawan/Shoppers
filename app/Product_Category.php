@@ -12,4 +12,8 @@ class Product_Category extends Model
     protected $fillable = [
         'category_name'
     ];
+
+    public function product(){
+        return $this->belongsToMany(Product::class, 'product_category_details')->withPivot(['id']);
+    }
 }

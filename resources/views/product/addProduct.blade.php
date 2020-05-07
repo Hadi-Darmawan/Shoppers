@@ -13,81 +13,104 @@
 </div>
 <div class="card p-3 mb-5 pb-3 mt-4">
     <div class="card-body text-center">
-      <h4 class="card-title">Add the new product</h4>
-  	</div>
-  <form class="mt-2" method="" action="">
-    <div class="form-group">
-        <label for="product_name">Product Name</label>
-      <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter the product name">
+        <h4 class="card-title">Add the new product</h4>
     </div>
-    <div class="form-group">
-      <label for="product_kategory">Product Ketegory</label>
-      <div class="input-group mb-1">
-        <select class="custom-select" id="product_kategory" name="kategory_product" size="3">
-		  <option selected>Choose the product category</option>
-		  @foreach($product_category as $category)
-		  	<option value="{{ $category->id }}">{{ $category->category_name }}</option>
-		  @endforeach
-        </select>
-        <div class="input-group-append">
-          <label class="input-group-text" for="product_kategory">Kategory</label>
+      
+    <form class="mt-2" method="post" action="{{ route('newProduct') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <label for="product_name">Product Name</label>
+            <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Enter the product name">
         </div>
-      </div>
-      <p class="text-secondary text-decoration-none">Can't find any category? Let's <a class="text-decoration-none" href="{{ route('addCategory') }}">create a new category</a></p>
-    </div>
-    <div class="form-group">
-      <label for="description">Product Description</label>
-      <input type="text" class="form-control" id="description" name="description" placeholder="Enter the product description">
-    </div>
-    <div class="form-group">
-      <label for="product_image">Product Image</label>
-      <div class="custom-file">
-          <input type="file" accept="image/*" name="product_image" id="product_image" class="custom-file-input">
-          <label class="custom-file-label" for="product_image">Select the product image</label>
-          <script>
-            $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-            });
-          </script>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="product_price">Product Price</label>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <span class="input-group-text">Rp</span>
+        <div class="form-group">
+            <label for="product_kategory">Product Ketegory</label>
+            <div class="input-group mb-1">
+                <select class="custom-select" id="product_kategory" name="category" size="3">
+                    <option selected>Choose the product category</option>
+            @foreach($product_category as $category)
+                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+            @endforeach
+                </select>
+                <div class="input-group-append">
+                    <label class="input-group-text" for="product_kategory">Kategory</label>
+                </div>
+            </div>
+            <p class="text-secondary text-decoration-none">Can't find any category? Let's <a class="text-decoration-none" href="{{ route('addCategory') }}">create a new category</a></p>
         </div>
-        <input type="text" id="product_price" class="form-control price" name="price" placeholder="Enter the product price"">
-        <div class="input-group-append">
-          <span class="input-group-text">,-</span>
+        <div class="form-group">
+            <label for="description">Product Description</label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter the product description">
         </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-4">
-        <label for="discount">Discount</label>
-        <div class="input-group mb-3">
-          <input type="text" id="discount" class="form-control" name="discount" placeholder="Enter the product discount">
-          <div class="input-group-append">
-            <span class="input-group-text">%</span>
-          </div>
+        <div class="form-group">
+            <label for="product_image">Product Image</label>
+            <div class="custom-file">
+                <input type="file" accept="image/*" name="image_name" id="product_image" class="custom-file-input">
+                <label class="custom-file-label" for="product_image">Select the product image</label>
+                <script>
+                $(".custom-file-input").on("change", function() {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                });
+                </script>
+            </div>
         </div>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="discount_start">Start at</label>
-        <div class="input-group mb-3">
-          <input type="date" id="discount_start" class="form-control" name="discount_start" placeholder="Product discount start">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="product_price">Product Price</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp</span>
+                    </div>
+                    <input type="text" id="product_price" class="form-control price" name="price" placeholder="Enter the product price"">
+                    <div class="input-group-append">
+                        <span class="input-group-text">,-</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="product_price">Product Weight</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="product_price" class="form-control price" name="weight" placeholder="Enter the product weight"">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Kg</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="product_price">Product Stock</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="product_price" class="form-control price" name="stock" placeholder="Enter the product stock"">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Pcs</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="form-group col-md-4">
-        <label for="discount_end">End at</label>
-        <div class="input-group mb-3">
-          <input type="date" id="discount_end" class="form-control" name="discount_end" placeholder="Product discount end">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="discount">Discount</label>
+                <div class="input-group mb-3">
+                    <input type="text" id="discount" class="form-control" name="percentage" placeholder="Enter the product discount">
+                    <div class="input-group-append">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="discount_start">Start at</label>
+                <div class="input-group mb-3">
+                    <input type="date" id="discount_start" class="form-control" name="start" placeholder="Product discount start">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="discount_end">End at</label>
+                <div class="input-group mb-3">
+                    <input type="date" id="discount_end" class="form-control" name="end" placeholder="Product discount end">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Add and Publish Product</button>
-  </form>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Add and Publish Product</button>
+    </form>
+
 </div>
 @endsection

@@ -63,6 +63,8 @@ Route::get('admin/product', 'ProductAdminController@index')->middleware('admin:a
 
 Route::get('admin/product/addnew', 'ProductAdminController@create')->middleware('admin:admin')->name('addProduct');
 
+Route::post('admin/product/newProduct', 'ProductAdminController@store')->middleware('admin:admin')->name('newProduct');
+
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');
 // })->middleware('auth:admin')->name('addProduct');

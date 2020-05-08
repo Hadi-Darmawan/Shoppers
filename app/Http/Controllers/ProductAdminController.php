@@ -22,7 +22,7 @@ class ProductAdminController extends Controller
         $products = Product::all()->sortByDesc('id');
         $images = Product_Image::all();
         // return view('product/allProduct', compact('products'))
-        return view('product/allProduct', compact('products', 'images'));
+        return view('product/allProduct', compact('products'));
     }
 
     /**
@@ -72,6 +72,12 @@ class ProductAdminController extends Controller
         if($request->hasFile('image_name')){
             foreach ($request->image_name as $product_image){
                 // $this->validate($product_image, ['image_name' => 'required|file|filled']);
+                // $product_image->resize(800, null, function ($constraint){
+                //     $constraint->aspectRatio();
+                // });
+                // $product_image->resize(null, 400, function ($constraint){
+                //     $constraint->aspectRatio();
+                // });
                 $product_image = $product_image->store('image_name');
                 $product->product_image()->create([
                     'image_name' => $product_image

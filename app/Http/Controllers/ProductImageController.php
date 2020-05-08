@@ -78,8 +78,9 @@ class ProductImageController extends Controller
      * @param  \App\Product_Image  $product_Image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product_Image $product_Image)
+    public function destroy(Product_Image $image)
     {
-        //
+        Product_Image::destroy($image->id);
+        return redirect()->back();
     }
 }

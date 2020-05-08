@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <form class="d-inline" action="delete/{{$image->id}}" method="post">
+                                <form class="d-inline" action="image/delete/{{$image->id}}" method="post">
                                     @method('delete')
                                     @csrf
                                     <button class="btn btn-outline-danger" @if($loop->first) disabled @endif>Delete Image</button>

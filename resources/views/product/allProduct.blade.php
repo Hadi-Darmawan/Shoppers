@@ -33,9 +33,12 @@
                 </div>
                 <div class="card-footer text-right">
                     <p class="card-text text-right">Rp {{ number_format($product->price) }}</p>
-                    <p class="card-text text-left">
-                        <a href="{{ route('detailProduct', $product->id) }}" class="btn btn-primary">Detail Product</a>
-                    </p>
+                    <form class="d-inline" action="product/delete/{{$product->id}}" method="post">
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-outline-danger text-justify">Delete</button>
+                            <a href="{{ route('detailProduct', $product->id) }}" class="btn btn-primary">Detail</a>
+                    </form>
                 </div>
             </div>
         </div>

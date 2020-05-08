@@ -67,7 +67,9 @@ Route::post('admin/product/new', 'ProductAdminController@store')->middleware('ad
 
 Route::get('admin/product/{product}', 'ProductAdminController@edit')->middleware('admin:admin')->name('detailProduct');
 
-Route::delete('admin/product/delete/{image}', 'ProductImageController@destroy')->middleware('admin:admin')->name('deleteImage');
+Route::delete('admin/product/image/delete/{image}', 'ProductImageController@destroy')->middleware('admin:admin')->name('deleteImage');
+
+Route::delete('admin/product/delete/{product}', 'ProductAdminController@destroy')->middleware('admin:admin')->name('deleteImage');
 
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');

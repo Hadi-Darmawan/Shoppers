@@ -36,7 +36,6 @@
                 </div>
             </div>
             <p class="text-secondary text-decoration-none">Can't find any category? Let's <a class="text-decoration-none" href="{{ route('addCategory') }}">create a new category</a></p>
-
         </div>
         <div class="form-group">
             <label class="font-weight-bolder" for="description">Product Description</label>

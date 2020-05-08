@@ -15,8 +15,8 @@
     <div class="card-body text-center">
         <h4 class="card-title">Product Detail</h4>
     </div>
-      
-    <form class="mt-2" method="post" action="{{ route('newProduct') }}" enctype="multipart/form-data">
+    <form class="mt-2" method="post" action="{{ route('updateProduct', $product->id) }}" enctype="multipart/form-data">
+        @method('patch')
         @csrf
         <div class="form-group">
             <label class="font-weight-bolder" for="product_name">Product Name</label>
@@ -25,39 +25,40 @@
         <div class="form-group">
             <label class="font-weight-bolder" for="product_kategory">Product Ketegory</label>
             <div class="input-group mb-1">
-                <select class="custom-select" id="product_kategory" name="category" multiple="">
+                <select class="custom-select" id="product_kategory" name="category[]" multiple="">
                     @foreach($product_category as $categories)
                         <option value="{{ $categories->id }}" @foreach($product->product_category as $category) @if($categories->id == $category->id)selected @endif @endforeach> {{ $categories->category_name }}
-                        </option>
-                    @endforeach
-                </select>
-                <div class="input-group-append">
-                    <label class="input-group-text" for="product_kategory">Kategory</label>
+                        </option> 
+                        @endforeach
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="product_kategory">Kategory</label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="font-weight-bolder" for="description">Product Description</label>
-            <textarea class="form-control" id="description" name="description" style="resize:none;height:120px;">{{$product->description}}</textarea>
-        </div>
+            <div class="form-group">
+                <label class="font-weight-bolder" for="description">Product Description</label>
+                <textarea class="form-control" id="description" name="description" style="resize:none;height:120px;">{{$product->description}}</textarea>
+            </div>
         <div class="card px-2 my-4">
             <label class="mt-2 ml-2 font-weight-bolder text-center">Product Images</label>
+            <p class="text-secondary text-decoration-none text-center">Manage the <a class="text-decoration-none" href="">product images</a></p>
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-4">
                     @foreach($product->product_image as $image)
-                        <div class="card text-right" style="height: 14rem;">
+                        <div class="card text-right" style="height: 11rem;">
                             <div class="carousel-inner" style="height: 15rem;">
                                 <div class="carousel-item active p-2">
                                     <img src="{{ asset('storage/' . $image->image_name) }}" alt="{{ $image->image_name }}" class="d-block w-100">
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <form class="d-inline" action="image/delete/{{$image->id}}" method="post">
+                            <!-- <div class="card-footer"> -->
+                                <!-- <form class="d-inline" action="{{ route('deleteImage', $image->id) }}" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button class="btn btn-outline-danger" @if($loop->first) disabled @endif>Delete Image</button>
-                                </form>
-                            </div>
+                                </form> -->
+                                <!-- <a class="btn btn-outline-danger">($loop->iteration) Image</a> -->
+                            <!-- </div> -->
                         </div>
                     @endforeach
                 </div>
@@ -67,17 +68,12 @@
                     <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input" multiple="true">
                     <label class="custom-file-label" for="product_image">Add another product image</label>
                     <script>
-                    $(".custom-file-input").on("change", function() {
-                    var fileName = $(this).val().split("\\").pop();
-                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-                    });
+                        $(".custom-file-input").on("change", function() {
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                        });
                     </script>
                 </div>
-                @if (session('images_status'))
-                    <div class="alert alert-danger alert-dismissible text-center" id="myAlert">
-                        <button type="button" class="close">&times;</button>
-                        {{ session('images_status') }}
-                    </div>
                     <script>
                         $(document).ready(function(){
                             $(".close").click(function(){
@@ -85,7 +81,6 @@
                             });
                         });
                     </script>
-                @endif
             </div>
         </div>
         <div class="form-row">
@@ -95,7 +90,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp</span>
                     </div>
-                    <input type="text" id="product_price" class="form-control text-right" name="price" placeholder="Enter the product price" value="{{ number_format($product->price) }}">
+                    <input type="text" id="product_price" class="form-control text-right" name="price" placeholder="Enter the product price" value="{{ $product->price }}">
                     <div class="input-group-append">
                         <span class="input-group-text">,-</span>
                     </div>
@@ -146,7 +141,7 @@
                 </div>
             </div>
             @endforeach
-            <div class="form-row">
+            <!-- <div class="form-row">
                 <div class="form-group col-md-4">
                     <label class="font-weight-bolder" for="discount">New Discount</label>
                     <div class="input-group">
@@ -168,10 +163,10 @@
                         <input type="date" id="discount_end" class="form-control text-right" name="end" placeholder="Product discount end">
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <p class="text-secondary text-decoration-none text-right">See all the <a class="text-decoration-none" href="">product discounts</a></p>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Save change</button>
     </form>
-
 </div>
 @endsection

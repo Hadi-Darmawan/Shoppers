@@ -52,6 +52,11 @@ class AuthUserController extends Controller
         return redirect()->route('userhome');
     }
 
+    public function getEditProfileUser(Request $request){
+        Auth::guard()->loginUsingId($request->id);
+        return view('profileUser');
+    }
+
     public function logout(){
         Auth::logout();
         return redirect()->route('userhome');

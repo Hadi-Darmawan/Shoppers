@@ -143,33 +143,6 @@
                     </div>
                     </div>
                 </div>
-                <div class="col mb-4">
-                    <div class="card">
-                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    </div>
-                </div>
-                <div class="col mb-4">
-                    <div class="card">
-                    <img src="https://embed-fastly.wistia.com/deliveries/240bc2061b58c92f5f1a5786b1d445cf47f02737.webp?image_crop_resized=1280x720" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                    </div>
-                </div>
             </div>
         </div>
 

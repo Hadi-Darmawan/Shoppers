@@ -48,7 +48,6 @@ class ProductAdminController extends Controller
             'product_name' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/',
             'category' => 'required|filled',
             'description'  => 'required|min:4|max:500',
-            // 'image_name' => 'required|file|filled',
             'price' => 'required|numeric|digits_between:3,9',
             'weight'=> 'required|numeric|digits_between:1,5',
             'stock' => 'required|numeric|digits_between:1,5',
@@ -56,10 +55,6 @@ class ProductAdminController extends Controller
             'start' => 'required',
             'end' => 'required',
         ]);
-
-        // $product_images = $request->file('image_name')->store('image_name');
-        // $product_images = $request->file('image_name');
-
         $product = Product::create([
             'product_name' => $request->product_name,
             'price' => $request->price,
@@ -71,13 +66,6 @@ class ProductAdminController extends Controller
 
         if($request->hasFile('image_name')){
             foreach ($request->image_name as $product_image){
-                // $this->validate($product_image, ['image_name' => 'required|file|filled']);
-                // $product_image->resize(800, null, function ($constraint){
-                //     $constraint->aspectRatio();
-                // });
-                // $product_image->resize(null, 400, function ($constraint){
-                //     $constraint->aspectRatio();
-                // });
                 $product_image = $product_image->store('image_name');
                 $product->product_image()->create([
                     'image_name' => $product_image
@@ -117,7 +105,6 @@ class ProductAdminController extends Controller
      */
     public function edit(Product $product)
     {
-
         $product_image = Product_Category::all();
         $discount = Discount::all();
         $product_category = Product_Category::all()->sortBy('category_name');
@@ -134,7 +121,40 @@ class ProductAdminController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $this->validate($request, [
+            'product_name' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/',
+            'category' => 'required|filled',
+            'description'  => 'required|min:4|max:500',
+            'price' => 'required|numeric|digits_between:3,9',
+            'weight'=> 'required|numeric|digits_between:1,5',
+            'stock' => 'required|numeric|digits_between:1,5',
+            'percentage' => 'required|numeric|digits_between:1,2',
+            'start' => 'required',
+            'end' => 'required',
+        ]);
+
+        Product::where('id', $product->id)
+            ->update([
+                'product_name' => $request->product_name,
+                'price' => $request->price,
+                'description' => $request->description,
+                'stock' => $request->stock,
+                'weight' => $request->weight,
+                'product_rate' => null
+            ]);
+
+        if($request->hasFile('image_name')){
+            foreach ($request->image_name as $product_image){
+                $product_image = $product_image->store('image_name');
+                $product->product_image()->create([
+                    'image_name' => $product_image
+                ]);
+            }
+        }
+
+        $product->product_category()->sync($request->category);
+
+        return redirect()->back()->with('status', 'Product details has been updated');
     }
 
     /**

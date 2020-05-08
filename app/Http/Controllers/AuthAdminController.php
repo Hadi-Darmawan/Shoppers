@@ -69,6 +69,11 @@ class AuthAdminController extends Controller
         return redirect()->route('adminhome')->with('status', 'New account has been created');
     }
 
+    public function getEditProfileAdmin(Request $request){
+        Auth::guard('admin')->loginUsingId($request->id);
+        return view('profileAdmin');
+    }
+
     public function logout(){
         Auth::logout();
         return redirect()->route('loginadmin');

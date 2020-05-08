@@ -17,19 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//Default Default
-// Route::get('/', function () {
-//     return view('welcome');
-// })->name('welcome');
+//Default Route
+Route::get('/', 'ProductUserController@index')->name('userhome');
 
-
-
-// Home Route Aplikasi
-Route::get('/', function () {
-    return view('userhome');
-})->name('userhome');
-
-Route::get('/profile/user', 'UserController@getEditProfileUser')->name('profileuser')->middleware('auth:user');
+Route::get('/profile/user', 'AuthUserController@getEditProfileUser')->name('profileuser')->middleware('auth:user');
 
 Route::get('/registeruser', 'AuthUserController@getRegisterUser')->middleware('guest');
 Route::post('/registeruser', 'AuthUserController@postRegisterUser')->name('registeruser')->middleware('guest');
@@ -46,7 +37,7 @@ Route::get('/admin/home', function () {
     return view('adminHome');
 })->middleware('admin:admin')->name('adminhome');
 
-Route::get('/profile/admin', 'AdminController@getEditProfileAdmin')->name('profileadmin')->middleware('admin:admin');
+Route::get('/profile/admin', 'AuthAdminController@getEditProfileAdmin')->name('profileadmin')->middleware('admin:admin');
 
 Route::get('/registeradmin', 'AuthAdminController@getRegisterAdmin')->middleware('admin:admin');
 Route::post('/registeradmin', 'AuthAdminController@postRegisterAdmin')->name('registeradmin')->middleware('admin:admin');
@@ -69,7 +60,9 @@ Route::get('admin/product/{product}', 'ProductAdminController@edit')->middleware
 
 Route::delete('admin/product/image/delete/{image}', 'ProductImageController@destroy')->middleware('admin:admin')->name('deleteImage');
 
-Route::delete('admin/product/delete/{product}', 'ProductAdminController@destroy')->middleware('admin:admin')->name('deleteImage');
+Route::delete('admin/product/delete/{product}', 'ProductAdminController@destroy')->middleware('admin:admin')->name('deleteProduct');
+
+Route::patch('admin/product/update/{product}', 'ProductAdminController@update')->middleware('admin:admin')->name('updateProduct');
 
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');

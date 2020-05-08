@@ -14,7 +14,7 @@ class ProductUserController extends Controller
      */
     public function index()
     {
-        //
+        return view('userHome');
     }
 
     /**

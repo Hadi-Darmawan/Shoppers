@@ -112,6 +112,13 @@ class ProductAdminController extends Controller
         return view('product/detailProduct', compact('product', 'product_category', 'discount', 'product_category'));
     }
 
+    public function editImage(Product $product)
+    {
+        $product_images = Product_Image::all();
+
+        return view('product/detailImage', compact('product_images', 'product'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -121,17 +128,6 @@ class ProductAdminController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $this->validate($request, [
-            'product_name' => 'required|min:2|max:50|not_regex:/[^A-Z a-z]/',
-            'category' => 'required|filled',
-            'description'  => 'required|min:4|max:500',
-            'price' => 'required|numeric|digits_between:3,9',
-            'weight'=> 'required|numeric|digits_between:1,5',
-            'stock' => 'required|numeric|digits_between:1,5',
-            'percentage' => 'required|numeric|digits_between:1,2',
-            'start' => 'required',
-            'end' => 'required',
-        ]);
 
         Product::where('id', $product->id)
             ->update([
@@ -157,6 +153,24 @@ class ProductAdminController extends Controller
         return redirect()->back()->with('status', 'Product details has been updated');
     }
 
+
+    public function updateImage(Request $request, Product $product)
+    {
+
+        $products = Product::where('id', $product->id);
+
+        if($request->hasFile('image_name')){
+            foreach ($request->image_name as $product_image){
+                $product_image = $product_image->store('image_name');
+                $product->product_image()->create([
+                    'image_name' => $product_image
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('status', 'Test Berhasil');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -166,6 +180,12 @@ class ProductAdminController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
+        return redirect()->back();
+    }
+
+    public function destroyImage(Product_Image $image)
+    {
+        Product_Image::destroy($image->id);
         return redirect()->back();
     }
 }

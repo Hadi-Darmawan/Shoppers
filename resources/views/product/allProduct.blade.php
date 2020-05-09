@@ -17,7 +17,7 @@
         <div class="col mb-4">
             <div class="card" style="height: 23rem;">
                 @foreach ($product->Product_Image->take(1)->sortByDesc('id') as $image)
-                <div class="carousel-inner my-auto" style="height: 11em;">
+                <div class="carousel-inner my-auto" style="height: 11rem;">
                     <div class="carousel-item active" >
                         <img src="{{ asset('storage/' . $image->image_name) }}" class="d-block w-100" alt=" {{ $image->image_name }}">
                     </div>

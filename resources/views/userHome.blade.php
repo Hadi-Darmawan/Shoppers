@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-sm-8 col-md-7 py-4">
                             <h4 class="text-white">User Page</h4>
-                                @auth
+                                @auth('user')
                                     <p class="text-muted">Welcome {{ Auth::User()->name }}.  This page will helps you to find your favorite books. Start exploring and get its all here in Shoppers.</p>
                                 @endauth
                                 @guest
@@ -68,7 +68,7 @@
                         <div class="col-sm-4 offset-md-1 py-4 text-right">
                             <h4 class="text-white">My Admin Dashboard</h4>
                             <ul class="nav flex-column justify-content-end">
-                                @auth 
+                                @auth('user')
                                     <li><a class="text-decoration-none" href="{{ route('profileuser') }}" class="text-white">My Profile</a></li>
                                     <li><a class="text-decoration-none" href="{{ route('logoutuser') }}" class="text-white">Logout</a></li>
                                 @endauth

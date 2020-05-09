@@ -5,6 +5,7 @@
 @section('contentTitle', 'Product Page')
 
 @section('content')
+
 <div class="card">
     <div class="card-body text-center">
         See all product that had posted
@@ -42,7 +43,7 @@
             </div>
         <div class="card px-2 my-4">
             <label class="mt-2 ml-2 font-weight-bolder text-center">Product Images</label>
-            <p class="text-secondary text-decoration-none text-center">Manage the <a class="text-decoration-none" href="">product images</a></p>
+            <p class="text-secondary text-decoration-none text-center">Manage the <a class="text-decoration-none" href="{{ route('detailImage', $product->id) }}">product images</a></p>
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-4">
                     @foreach($product->product_image as $image)
@@ -51,13 +52,6 @@
                                     <img src="{{ asset('storage/' . $image->image_name) }}" alt="{{ $image->image_name }}" class="d-block w-100">
                                 </div>
                             </div>
-                            <!-- <div class="card-footer"> -->
-                                <!-- <form class="d-inline" action="{{ route('deleteImage', $image->id) }}" method="post">
-                                    @method('delete')
-                                    @csrf
-                                </form> -->
-                                <!-- <a class="btn btn-outline-danger">($loop->iteration) Image</a> -->
-                            <!-- </div> -->
                     @endforeach
                 </div>
             </div>
@@ -72,13 +66,6 @@
                         });
                     </script>
                 </div>
-                    <script>
-                        $(document).ready(function(){
-                            $(".close").click(function(){
-                                $("#myAlert").alert("close");
-                            });
-                        });
-                    </script>
             </div>
         </div>
         <div class="form-row">
@@ -114,7 +101,7 @@
             </div>
         </div>
         <div class="card p-3 my-4">
-            @foreach($product->discount as $discount)
+            @foreach($product->discount->take(1) as $discount)
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label class="font-weight-bolder" for="discount">{{ $loop->iteration}} Discount</label>
@@ -167,4 +154,5 @@
         <button type="submit" class="btn btn-primary btn-lg btn-block">Save change</button>
     </form>
 </div>
+
 @endsection

@@ -68,6 +68,12 @@ Route::delete('admin/product/image/delete/{image}', 'ProductAdminController@dest
 
 Route::patch('admin/product/image/update/{product}', 'ProductAdminController@updateImage')->middleware('admin:admin')->name('updateImage');
 
+Route::get('admin/product/discount/{product}', 'ProductAdminController@detailDiscount')->middleware('admin:admin')->name('detailDiscount');
+
+Route::get('admin/product/discount/edit/{discount}', 'ProductAdminController@editDiscount')->middleware('admin:admin')->name('editDiscount');
+
+Route::patch('admin/product/discount/update/{discount}', 'ProductAdminController@updateDiscount')->middleware('admin:admin')->name('updateDiscount');
+
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');
 // })->middleware('auth:admin')->name('addProduct');

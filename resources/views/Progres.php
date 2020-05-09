@@ -15,11 +15,12 @@
 
     Progres Modul 2
         <!-- 1. Membuat CRUD Courier -->
-        2. Membuat CRUD Product
+        <!-- 2. Membuat CRUD Product -->
         <!-- 3. Membuat CRUD Categories -->
         <!-- 4. Membuat CRUD Detail_Kategori -->
-        5. Membuat CRUD Product_Images
-        6. Membuat CRUD Discount
+        <!-- 5. Membuat CRUD Product_Images -->
+        <!-- 6. Membuat CRUD Discount -->
+        7. Menampilkan data semua product ke pada user
 
 </body>
 </html>

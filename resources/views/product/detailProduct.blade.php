@@ -16,7 +16,7 @@
     <div class="card-body text-center">
         <h4 class="card-title">Product Detail</h4>
     </div>
-    <form class="mt-2" method="post" action="{{ route('updateProduct', $product->id) }}" enctype="multipart/form-data">
+    <form class="mt-2" method="post" action="{{ route('updateDiscount', $product->id) }}">
         @method('patch')
         @csrf
         <div class="form-group">
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="card p-3 my-4">
-            @foreach($product->discount->take(1) as $discount)
+            @foreach($product->discount->sortByDesc('id')->take(1) as $discount)
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label class="font-weight-bolder" for="discount">{{ $loop->iteration}} Discount</label>
@@ -126,30 +126,7 @@
                 </div>
             </div>
             @endforeach
-            <!-- <div class="form-row">
-                <div class="form-group col-md-4">
-                    <label class="font-weight-bolder" for="discount">New Discount</label>
-                    <div class="input-group">
-                        <input type="text" id="discount" class="form-control text-right" name="percentage" placeholder="Enter the product discount">
-                        <div class="input-group-append">
-                            <span class="input-group-text">%</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="font-weight-bolder" for="discount_start">Start at</label>
-                    <div class="input-group">
-                        <input type="date" id="discount_start" class="form-control text-right" name="start" placeholder="Product discount start">
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <label class="font-weight-bolder" for="discount_end">End at</label>
-                    <div class="input-group">
-                        <input type="date" id="discount_end" class="form-control text-right" name="end" placeholder="Product discount end">
-                    </div>
-                </div>
-            </div> -->
-            <p class="text-secondary text-decoration-none text-right">See all the <a class="text-decoration-none" href="">product discounts</a></p>
+            <p class="text-secondary text-decoration-none text-right">See all the <a class="text-decoration-none" href="{{ route('detailDiscount', $product->id) }}">product discounts</a></p>
         </div>
         <button type="submit" class="btn btn-primary btn-lg btn-block">Save change</button>
     </form>

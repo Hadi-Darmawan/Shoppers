@@ -25,6 +25,13 @@ class ProductAdminController extends Controller
         return view('product/allProduct', compact('products'));
     }
 
+    public function detailDiscount(Product $product)
+    {
+        $discount = Discount::all()->sortByDesc('id');
+
+        return view('product/detailDiscount', compact('product', 'discount'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -119,6 +126,13 @@ class ProductAdminController extends Controller
         return view('product/detailImage', compact('product_images', 'product'));
     }
 
+    public function editDiscount(Discount $discount)
+    {
+        $product= Product::all();
+
+        return view('product/editDiscount', compact('discount', 'product'));
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -157,8 +171,6 @@ class ProductAdminController extends Controller
     public function updateImage(Request $request, Product $product)
     {
 
-        $products = Product::where('id', $product->id);
-
         if($request->hasFile('image_name')){
             foreach ($request->image_name as $product_image){
                 $product_image = $product_image->store('image_name');
@@ -168,7 +180,42 @@ class ProductAdminController extends Controller
             }
         }
 
+        return redirect()->back()->with('status', 'The new product images has been added');
+    }
+
+    public function updateDiscount(Request $request, Discount $discount)
+    {
+        $product = $discount->product->id;
+
+        // dd($product);
+
+        Discount::where('id', $discount->id)
+        ->update([
+            'product_id' => $product,
+            'percentage' => $request->percentage,
+            'start' => $request->start,
+            'end' => $request->end
+        ]);
+
+        // $product->discount()->create([
+        //     'percentage' => $request->percentage,
+        //     'start' => $request->start,
+        //     'end' => $request->end
+        // ]);
+
         return redirect()->back()->with('status', 'Test Berhasil');
+    }
+
+    public function updateNewDiscount(Request $request, Product $product)
+    {
+
+        $product->discount()->where('id', $product->discount->id)->update([
+            'percentage' => $request->percentage,
+            'start' => $request->start,
+            'end' => $request->end
+        ]);
+
+        return redirect()->back()->with('status', 'The product discount has been updated');
     }
 
     /**

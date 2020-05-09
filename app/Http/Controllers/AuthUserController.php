@@ -10,7 +10,7 @@ class AuthUserController extends Controller
 {
     //Funsi Auth untuk User
     public function getLoginUser(){
-        return view('loginUser');
+        return view('auth_user/loginUser');
     }
 
     public function postLoginUser(Request $request){
@@ -26,7 +26,7 @@ class AuthUserController extends Controller
     }
 
     public function getRegisterUser(){
-        return view('registerUser');
+        return view('auth_user/registerUser');
     }
 
     public function postRegisterUser(Request $request){
@@ -54,7 +54,7 @@ class AuthUserController extends Controller
 
     public function getEditProfileUser(Request $request){
         Auth::guard()->loginUsingId($request->id);
-        return view('profileUser');
+        return view('auth_user/profileUser');
     }
 
     public function logout(){

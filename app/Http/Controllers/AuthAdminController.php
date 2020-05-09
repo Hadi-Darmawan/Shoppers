@@ -16,7 +16,7 @@ class AuthAdminController extends Controller
     }
 
     public function getLoginAdmin(){
-        return view('loginAdmin');
+        return view('auth_admin/loginAdmin');
     }
 
     public function postLoginAdmin(Request $request){
@@ -41,7 +41,7 @@ class AuthAdminController extends Controller
     // }
     
     public function getRegisterAdmin(){
-        return view('registerAdmin');
+        return view('auth_admin/registerAdmin');
     }
     
     public function postRegisterAdmin(Request $request){
@@ -71,7 +71,7 @@ class AuthAdminController extends Controller
 
     public function getEditProfileAdmin(Request $request){
         Auth::guard('admin')->loginUsingId($request->id);
-        return view('profileAdmin');
+        return view('auth_admin/profileAdmin');
     }
 
     public function logout(){

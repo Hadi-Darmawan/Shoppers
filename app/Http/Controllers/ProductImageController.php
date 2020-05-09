@@ -57,7 +57,9 @@ class ProductImageController extends Controller
      */
     public function edit(Product_Image $product_Image)
     {
-        //
+        $product_images = Product_Image::all();
+
+        return view('productImage', compact('product_images'));
     }
 
     /**

@@ -46,8 +46,7 @@
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-4">
                     @foreach($product->product_image as $image)
-                        <div class="card text-right" style="height: 11rem;">
-                            <div class="carousel-inner" style="height: 15rem;">
+                            <div class="carousel-inner" style="height: 9rem;">
                                 <div class="carousel-item active p-2">
                                     <img src="{{ asset('storage/' . $image->image_name) }}" alt="{{ $image->image_name }}" class="d-block w-100">
                                 </div>
@@ -59,7 +58,6 @@
                                 </form> -->
                                 <!-- <a class="btn btn-outline-danger">($loop->iteration) Image</a> -->
                             <!-- </div> -->
-                        </div>
                     @endforeach
                 </div>
             </div>

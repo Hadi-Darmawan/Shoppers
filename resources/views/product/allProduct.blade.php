@@ -15,9 +15,9 @@
     <div class="row row-cols-1 row-cols-md-4 text-justify">
         @foreach($products as $product)
         <div class="col mb-4">
-            <div class="card" style="height: 25rem;">
+            <div class="card" style="height: 23rem;">
                 @foreach ($product->Product_Image->take(1)->sortByDesc('id') as $image)
-                <div class="carousel-inner my-auto" style="height: 15rem;">
+                <div class="carousel-inner my-auto" style="height: 11em;">
                     <div class="carousel-item active" >
                         <img src="{{ asset('storage/' . $image->image_name) }}" class="d-block w-100" alt=" {{ $image->image_name }}">
                     </div>
@@ -25,11 +25,11 @@
                 @endforeach
                 <div class="card-body">
                     <p class="card-title text-center">{{ $product->product_name }}</p>
-                        <ul class="list-inline text-right mt-4">
-                            @foreach ($product->Product_Category as $category)
-                            <li class="list-inline-item text-secondary">{{ $category->category_name }}</li>
-                            @endforeach
-                        </ul>
+                    <p class="text-right text-secondary">
+                        @foreach ($product->Product_Category as $category)
+                            {{ $category->category_name }}
+                        @endforeach
+                    </p>
                 </div>
                 <div class="card-footer text-right">
                     <p class="card-text text-right">Rp {{ number_format($product->price) }}</p>

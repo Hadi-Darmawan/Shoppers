@@ -20,8 +20,7 @@ class ProductAdminController extends Controller
     public function index()
     {
         $products = Product::all()->sortByDesc('id');
-        $images = Product_Image::all();
-        // return view('product/allProduct', compact('products'))
+        // $images = Product_Image::all();
         return view('product/allProduct', compact('products'));
     }
 

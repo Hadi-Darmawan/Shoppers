@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Product_Category;
+use App\Product_Category_Detail;
+use App\Product_Image;
+use App\Discount;
 use Illuminate\Http\Request;
 
 class ProductUserController extends Controller
@@ -14,7 +18,10 @@ class ProductUserController extends Controller
      */
     public function index()
     {
-        return view('userHome');
+        $products = Product::all()->sortByDesc('id');
+        $images = Product_Image::all();
+        $discounts = Discount::all()->sortByDesc('id');
+        return view('userHome', compact('products'));
     }
 
     /**

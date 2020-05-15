@@ -20,8 +20,8 @@ class ProductAdminController extends Controller
     public function index()
     {
         $products = Product::all()->sortByDesc('id');
-        // $images = Product_Image::all();
-        return view('product/allProduct', compact('products'));
+        $product_image = Product_Image::all()->sortByDesc('id');
+        return view('product/allProduct', compact('products', 'product_image'));
     }
 
     public function detailDiscount(Product $product)
@@ -61,6 +61,7 @@ class ProductAdminController extends Controller
             'start' => 'required',
             'end' => 'required',
         ]);
+        
         $product = Product::create([
             'product_name' => $request->product_name,
             'price' => $request->price,

@@ -16,7 +16,7 @@
     <div class="card-body text-center">
         <h4 class="card-title">Product Detail</h4>
     </div>
-    <form class="mt-2" method="post" action="{{ route('updateDiscount', $product->id) }}">
+    <form class="mt-2" method="post" action="{{ route('updateProduct', $product->id) }}" enctype="multipart/form-data">
         @method('patch')
         @csrf
         <div class="form-group">
@@ -46,7 +46,7 @@
             <p class="text-secondary text-decoration-none text-center">Manage the <a class="text-decoration-none" href="{{ route('detailImage', $product->id) }}">product images</a></p>
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-4">
-                    @foreach($product->product_image as $image)
+                    @foreach($product->product_image->sortByDesc('id') as $image)
                             <div class="carousel-inner" style="height: 9rem;">
                                 <div class="carousel-item active p-2">
                                     <img src="{{ asset('storage/' . $image->image_name) }}" alt="{{ $image->image_name }}" class="d-block w-100">

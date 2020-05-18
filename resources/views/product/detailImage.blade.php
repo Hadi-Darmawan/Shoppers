@@ -12,7 +12,7 @@
         <p class="text-secondary">See <a href="{{ route('detailProduct', $product->id) }}" class="text-secondary text-decoration-none">product details</a></p>
     </div>
     <div class="row row-cols-1 row-cols-md-4 mt-2">
-        @foreach($product->product_image as $image)
+        @foreach($product->product_image->sortByDesc('id') as $image)
         <div class="col mb-4">
             <div class="card">
                 <div class="carousel-inner my-auto" style="height: 8rem;">
@@ -38,8 +38,13 @@
         @csrf
         <div class="form-group">
             <div class="custom-file">
-                <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input" multiple="true">
+                <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input @error('image_name') is-invalid @enderror" multiple="true">
                 <label class="custom-file-label" for="product_image">Add another product image</label>
+                @error('image_name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
                 <script>
                     $(".custom-file-input").on("change", function() {
                     var fileName = $(this).val().split("\\").pop();

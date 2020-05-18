@@ -19,9 +19,9 @@ class ProductUserController extends Controller
     public function index()
     {
         $products = Product::all()->sortByDesc('id');
-        $images = Product_Image::all();
+        $product_image = Product_Image::all()->sortByDesc('id');
         $discounts = Discount::all()->sortByDesc('id');
-        return view('userHome', compact('products'));
+        return view('userHome', compact('products', 'product_image'));
     }
 
     /**

@@ -5,10 +5,12 @@
 @section('contentTitle', 'Product Page')
 
 @section('content')
+
 <div class="card">
     <div class="card-body text-center">
-        Add new product. Click the button below.
-        <a href="{{ route('addProduct') }}" class="btn btn-outline-secondary btn-lg btn-block">Add Product</a>
+        <p class="card-text">Add new product or see all the product category. Click the button below.</p>
+        <a href="{{ route('addProduct') }}" class="btn btn-outline-secondary btn-lg">Add Product</a>
+        <a href="{{ route('addCategory') }}" class="btn btn-outline-secondary btn-lg">Product Category</a>
     </div>
 </div>
 <div class="card-body text-center">

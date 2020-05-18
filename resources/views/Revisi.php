@@ -21,6 +21,14 @@
             <!-- - Admin yang tidak login tapi berusaha untuk mengakses halaman register akan dialikan ke halaman register admin -->
             <!-- - Admin yang telah login atau belum tidak dapat mengakses halaman Spesifik User (Profile User, Keranjang User, dan Wishlist User) -->
 
+
+        Perbaikan
+        <!-- 1. Menambahkan tombol See all Categories pada halaman product admin -->
+        <!-- 2. Memberikan Validasi pada saat Insert Product -->
+        <!-- 3. Memberikan Validasi pada Edit Product Admin -->
+        <!-- 4. Memberikan Validasi pada Edit Image Admin -->
+        5. Memberikan Validasi pada Add dan Edit Discount Admin
+
     </p>
 </body>
 </html>

@@ -21,12 +21,17 @@
         @csrf
         <div class="form-group">
             <label class="font-weight-bolder" for="product_name">Product Name</label>
-            <input type="text" class="form-control" id="product_name" name="product_name" value="{{$product->product_name}}">
+            <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" name="product_name" value="{{$product->product_name}}">
+            @error('product_name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label class="font-weight-bolder" for="product_kategory">Product Ketegory</label>
             <div class="input-group mb-1">
-                <select class="custom-select" id="product_kategory" name="category[]" multiple="">
+                <select class="custom-select @error('category') is-invalid @enderror" id="product_kategory" name="category[]" multiple="">
                     @foreach($product_category as $categories)
                         <option value="{{ $categories->id }}" @foreach($product->product_category as $category) @if($categories->id == $category->id)selected @endif @endforeach> {{ $categories->category_name }}
                         </option> 
@@ -35,12 +40,22 @@
                     <div class="input-group-append">
                         <label class="input-group-text" for="product_kategory">Kategory</label>
                     </div>
+                    @error('category')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
-            <div class="form-group">
-                <label class="font-weight-bolder" for="description">Product Description</label>
-                <textarea class="form-control" id="description" name="description" style="resize:none;height:120px;">{{$product->description}}</textarea>
-            </div>
+        <div class="form-group">
+            <label class="font-weight-bolder" for="description">Product Description</label>
+            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" style="resize:none;height:120px;">{{$product->description}}</textarea>
+            @error('description')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
         <div class="card px-2 my-4">
             <label class="mt-2 ml-2 font-weight-bolder text-center">Product Images</label>
             <p class="text-secondary text-decoration-none text-center">Manage the <a class="text-decoration-none" href="{{ route('detailImage', $product->id) }}">product images</a></p>
@@ -57,8 +72,13 @@
             </div>
             <div class="form-group">
                 <div class="custom-file">
-                    <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input" multiple="true">
+                    <input type="file" accept="image/*" name="image_name[]" id="product_image" class="custom-file-input @error('image_name') is-invalid @enderror" multiple="true">
                     <label class="custom-file-label" for="product_image">Add another product image</label>
+                    @error('image_name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                     <script>
                         $(".custom-file-input").on("change", function() {
                         var fileName = $(this).val().split("\\").pop();
@@ -75,28 +95,43 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">Rp</span>
                     </div>
-                    <input type="text" id="product_price" class="form-control text-right" name="price" placeholder="Enter the product price" value="{{ $product->price }}">
+                    <input type="text" id="product_price" class="form-control text-right @error('price') is-invalid @enderror" name="price" placeholder="Enter the product price" value="{{ $product->price }}">
                     <div class="input-group-append">
                         <span class="input-group-text">,-</span>
                     </div>
+                    @error('price')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bolder" for="product_price">Product Weight</label>
                 <div class="input-group mb-3">
-                    <input type="text" id="product_price" class="form-control text-right" name="weight" placeholder="Enter the product weight" value="{{ $product->weight }}">
+                    <input type="text" id="product_price" class="form-control text-right @error('weight') is-invalid @enderror" name="weight" placeholder="Enter the product weight" value="{{ $product->weight }}">
                     <div class="input-group-append">
                         <span class="input-group-text">Kg</span>
                     </div>
+                    @error('weight')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="form-group col-md-3">
                 <label class="font-weight-bolder" for="product_price">Product Stock</label>
                 <div class="input-group mb-3">
-                    <input type="text" id="product_price" class="form-control text-right" name="stock" placeholder="Enter the product stock" value="{{ $product->stock }}">
+                    <input type="text" id="product_price" class="form-control text-right @error('stock') is-invalid @enderror" name="stock" placeholder="Enter the product stock" value="{{ $product->stock }}">
                     <div class="input-group-append">
                         <span class="input-group-text">Pcs</span>
                     </div>
+                    @error('stock')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
         </div>

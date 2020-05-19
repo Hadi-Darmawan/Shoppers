@@ -76,7 +76,7 @@
             </div>
 
             <div class="custom-file mt-2 mb-3">
-            <div class="form-label-group mt-1">
+            <!-- <div class="form-label-group mt-1"> -->
                 <input type="file" name="Profile" id="inputProfileImage" accept="image/*" class="custom-file-input @error('Profile') is-invalid @enderror" autofocus>
                 <!-- <input type="file" class="custom-file-input" id="customFile" > -->
                 <label class="custom-file-label" for="inputProfileImage">Profile Image</label>
@@ -92,7 +92,7 @@
                         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
                     });
                 </script>
-            </div>
+            <!-- </div> -->
             </div>
 
             <div class="form-label-group mt-1">

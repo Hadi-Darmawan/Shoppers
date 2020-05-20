@@ -121,25 +121,18 @@ class ProductAdminController extends Controller
         return view('product/editDiscount', compact('discount', 'product'));
     }
 
-    public function updateDiscount(Request $request, Discount $discount){
-        $product = $discount->product->id;
-        Discount::where('id', $discount->id)
-        ->update([
-            'product_id' => $product,
-            'percentage' => $request->percentage,
-            'start' => $request->start,
-            'end' => $request->end
+    public function updateDiscount(Request $request, Product $product){
+        $this->validate($request, [
+            'percentage' => 'required|numeric|digits_between:1,2',
+            'start' => 'required',
+            'end' => 'required',
         ]);
-        return redirect()->back()->with('status', 'Test Berhasil');
-    }
-
-    public function updateNewDiscount(Request $request, Product $product){
-        $product->discount()->where('id', $product->discount->id)->update([
-            'percentage' => $request->percentage,
-            'start' => $request->start,
-            'end' => $request->end
+        $product->discount()->create([
+                'percentage' => $request->percentage,
+                'start' => $request->start,
+                'end' => $request->end
         ]);
-        return redirect()->back()->with('status', 'The product discount has been updated');
+        return redirect()->back()->with('status', 'The product discount has been added');
     }
 
     public function editImage(Product $product){

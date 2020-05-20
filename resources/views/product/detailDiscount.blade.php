@@ -39,15 +39,20 @@
         <div class="row">
             <div class="col">
                 <div class="input-group">
-                    <input type="text" class="form-control text-right" name="percentage" placeholder="Percentage">
+                    <input type="text" class="form-control text-right @error('percentage') is-invalid @enderror" name="percentage" placeholder="Percentage">
                     <div class="input-group-prepend">
                         <div class="input-group-text">%</div>
                     </div>
+                    @error('percentage')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="col">
                 <div class="input-group">
-                    <input type="date" class="form-control text-right" name="start" placeholder="Percentage">
+                    <input type="date" class="form-control text-right @error('start') is-invalid @enderror" name="start">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
                             <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -56,11 +61,16 @@
                             </svg>
                         </div>
                     </div>
+                    @error('start')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="col">
                 <div class="input-group">
-                    <input type="date" class="form-control text-right" name="end" placeholder="Percentage">
+                    <input type="date" class="form-control text-right @error('end') is-invalid @enderror" name="end">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
                             <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -69,6 +79,11 @@
                             </svg>
                         </div>
                     </div>
+                    @error('end')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
             </div>
             <div class="col-auto">

@@ -72,7 +72,9 @@ Route::get('admin/product/discount/{product}', 'ProductAdminController@detailDis
 
 Route::get('admin/product/discount/edit/{discount}', 'ProductAdminController@editDiscount')->middleware('admin:admin')->name('editDiscount');
 
-Route::patch('admin/product/discount/update/{discount}', 'ProductAdminController@updateDiscount')->middleware('admin:admin')->name('updateDiscount');
+Route::patch('admin/product/discount/update/{product}', 'ProductAdminController@updateDiscount')->middleware('admin:admin')->name('updateDiscount');
+
+// Route::patch('admin/product/discount/update/{discount}', 'ProductAdminController@updateDiscount')->middleware('admin:admin')->name('updateDiscount');
 
 // Route::get('/admin/product/addnew', function () {
 //     return view('product/addProduct');

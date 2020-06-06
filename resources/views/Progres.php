@@ -22,5 +22,14 @@
         <!-- 6. Membuat CRUD Discount -->
         7. Menampilkan data semua product ke pada user
 
+    Progres Modul 4
+        1. Notifikasi Perubahan Status Stransaksi Pada User
+        2. Notifikasi Respon Ulasan Product User
+        3. Notifikasi Transaksi Baru
+        4. Notifikasi User telah menguggah bukti pembayaran
+        5. Notifikasi Jika Ada Ulasan Product
+        6. Report Transaksi Bulanan dan Tahunan
+        7. Grafik Penjualan
+
 </body>
 </html>
